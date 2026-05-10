@@ -1,12 +1,11 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/yourusername/claritylabs/main/image/Clarity%20Labs.png" width="140"/>
+<img src="Company logo.png" width="140"/>
 
 # 🚀 Clarity Labs
 
 ### Technology • Innovation • Learning • Professional Solutions
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=24&pause=1000&color=38BDF8&center=true&vCenter=true&width=700&lines=AI+%26+Python+Training;Robotics+%26+Innovation;Data+Analytics+%26+Dashboards;Freelance+Project+Solutions;Academic+%26+Legal+Consultancy" />
 
 ---
 
