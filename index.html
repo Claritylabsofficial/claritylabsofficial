@@ -1,727 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Clarity Labs</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-/* COLORS */
-:root{
-    --bg:#07111f;
-    --bg2:#0f172a;
-    --card:rgba(255,255,255,0.05);
-    --border:rgba(255,255,255,0.08);
-    --text:#dbeafe;
-    --light:#94a3b8;
-    --main:#38bdf8;
-    --main2:#0ea5e9;
-}
-
-/* BODY */
-body{
-    background:linear-gradient(135deg,#07111f,#0f172a,#020617);
-    color:var(--text);
-    overflow-x:hidden;
-}
-
-/* NAVBAR */
-.navbar{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:18px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(0,0,0,0.35);
-    backdrop-filter:blur(12px);
-    z-index:1000;
-    border-bottom:1px solid rgba(255,255,255,0.05);
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.logo img{
-    width:50px;
-    height:50px;
-    border-radius:12px;
-    box-shadow:0 0 25px rgba(56,189,248,0.5);
-}
-
-.logo h2{
-    color:var(--main);
-    font-size:26px;
-}
-
-.nav-links{
-    display:flex;
-    gap:30px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:var(--text);
-    font-size:15px;
-    transition:0.3s;
-}
-
-.nav-links a:hover{
-    color:var(--main);
-}
-
-/* HERO */
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:120px 8% 80px;
-    gap:40px;
-}
-
-.hero-left{
-    flex:1;
-}
-
-.hero-left h3{
-    color:var(--main);
-    font-size:22px;
-    margin-bottom:15px;
-}
-
-.hero-left h1{
-    font-size:65px;
-    line-height:1.1;
-    margin-bottom:20px;
-}
-
-.hero-left p{
-    color:var(--light);
-    line-height:1.9;
-    max-width:650px;
-    margin-bottom:35px;
-    font-size:16px;
-}
-
-/* BUTTONS */
-.hero-buttons{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:15px 32px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.4s;
-}
-
-.btn-primary{
-    background:linear-gradient(45deg,#0ea5e9,#38bdf8);
-    color:white;
-    box-shadow:0 0 20px rgba(56,189,248,0.4);
-}
-
-.btn-primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 40px rgba(56,189,248,0.7);
-}
-
-.btn-outline{
-    border:2px solid var(--main);
-    color:var(--main);
-}
-
-.btn-outline:hover{
-    background:var(--main);
-    color:white;
-    transform:translateY(-5px);
-}
-
-/* HERO IMAGE */
-.hero-right{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.hero-right img{
-    width:430px;
-    max-width:100%;
-    animation:float 4s ease-in-out infinite;
-    filter:drop-shadow(0 0 40px rgba(56,189,248,0.5));
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-18px);
-    }
-    100%{
-        transform:translateY(0px);
-    }
-}
-
-/* SECTION */
-section{
-    padding:100px 8%;
-}
-
-.section-title{
-    text-align:center;
-    font-size:42px;
-    color:var(--main);
-    margin-bottom:15px;
-}
-
-.section-subtitle{
-    text-align:center;
-    color:var(--light);
-    margin-bottom:60px;
-}
-
-/* ABOUT */
-.about{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-}
-
-.about-card{
-    background:var(--card);
-    padding:35px;
-    border-radius:25px;
-    border:1px solid var(--border);
-    transition:0.4s;
-}
-
-.about-card:hover{
-    transform:translateY(-10px);
-    border-color:var(--main);
-}
-
-.about-card h3{
-    color:var(--main);
-    margin-bottom:15px;
-    font-size:24px;
-}
-
-.about-card p{
-    color:var(--light);
-    line-height:1.8;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-/* CARD */
-.card{
-    background:var(--card);
-    padding:35px 25px;
-    border-radius:24px;
-    border:1px solid var(--border);
-    transition:0.4s;
-    text-align:center;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    border-color:var(--main);
-    box-shadow:0 0 30px rgba(56,189,248,0.15);
-}
-
-.card img{
-    width:100%;
-    border-radius:16px;
-    margin-bottom:20px;
-}
-
-.card h3{
-    color:var(--main);
-    margin-bottom:15px;
-}
-
-.card p{
-    color:var(--light);
-    line-height:1.8;
-    font-size:14px;
-}
-
-/* STATS */
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.stat-box{
-    background:var(--card);
-    padding:35px;
-    text-align:center;
-    border-radius:20px;
-    border:1px solid var(--border);
-}
-
-.stat-box h1{
-    color:var(--main);
-    font-size:45px;
-}
-
-.stat-box p{
-    color:var(--light);
-}
-
-/* CONTACT */
-.contact-box{
-    max-width:850px;
-    margin:auto;
-    background:var(--card);
-    padding:45px;
-    border-radius:25px;
-    border:1px solid var(--border);
-    text-align:center;
-}
-
-.contact-box h2{
-    color:var(--main);
-    margin-bottom:20px;
-}
-
-.contact-box p{
-    color:var(--light);
-    line-height:1.9;
-    margin-bottom:15px;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    background:#020617;
-    color:#94a3b8;
-    border-top:1px solid rgba(255,255,255,0.05);
-}
-
-/* ANIMATION */
-.fade{
-    opacity:0;
-    transform:translateY(30px);
-    transition:1s;
-}
-
-.fade.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* MOBILE */
-@media(max-width:900px){
-
-    .hero{
-        flex-direction:column-reverse;
-        text-align:center;
-    }
-
-    .hero-left h1{
-        font-size:45px;
-    }
-
-    .navbar{
-        padding:15px 5%;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<div class="navbar">
-
-    <div class="logo">
-        <img src="image/Clarity Labs.png">
-        <h2>Clarity Labs</h2>
-    </div>
-
-    <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
-
-</div>
-
-<!-- HERO -->
-<section class="hero" id="home">
-
-    <div class="hero-left">
-
-        <h3>
-            Technology • Innovation • Learning • Legal Consultancy
-        </h3>
-
-        <h1>
-            Building Future Skills <br>
-            Through Technology
-        </h1>
-
-        <p>
-            Clarity Labs is a modern technology and professional services company focused on 
-            AI education, robotics training, software development, legal consultancy, 
-            academic support, data analytics, and freelance project solutions. We empower 
-            students, startups, professionals, and businesses through practical learning, 
-            innovative solutions, and expert guidance.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#services" class="btn btn-primary">
-                Explore Services
-            </a>
-
-            <a href="#contact" class="btn btn-outline">
-                Contact Us
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="hero-right">
-        <img src="image/Clarity Labs.png">
-    </div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="fade">
-
-    <h2 class="section-title">About Clarity Labs</h2>
-
-    <p class="section-subtitle">
-        Empowering students, professionals, and businesses through innovation.
-    </p>
-
-    <div class="about">
-
-        <div class="about-card">
-            <h3>Our Vision</h3>
-
-            <p>
-                To create a future where technology education and professional 
-                consultancy become accessible, practical, and industry-focused 
-                for everyone.
-            </p>
-        </div>
-
-        <div class="about-card">
-            <h3>Our Mission</h3>
-
-            <p>
-                We provide innovative training programs, freelance solutions, 
-                project development, legal consultancy, and mentorship in 
-                AI, Python, Robotics, Data Analytics, and emerging technologies.
-            </p>
-        </div>
-
-        <div class="about-card">
-            <h3>What We Do</h3>
-
-            <p>
-                From online technical classes and real-time project development 
-                to legal consultancy and professional documentation support, 
-                Clarity Labs delivers complete technology and professional solutions.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="fade">
-
-    <h2 class="section-title">Our Services</h2>
-
-    <p class="section-subtitle">
-        Professional technology solutions and consultancy services.
-    </p>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>AI & Python Classes</h3>
-
-            <p>
-                Interactive online and offline training programs covering Artificial Intelligence, 
-                Python programming, Machine Learning, and real-world applications.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Robotics Training</h3>
-
-            <p>
-                Hands-on robotics learning programs including Arduino, automation, 
-                IoT projects, embedded systems, and robotics innovation workshops.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Freelance Projects</h3>
-
-            <p>
-                Custom software development, dashboard creation, web solutions, 
-                poster designing, presentation creation, and technical documentation.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Academic Support</h3>
-
-            <p>
-                Assistance for mini projects, final year projects, academic record writing, 
-                technical reports, project guidance, and presentation design.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Data Analytics</h3>
-
-            <p>
-                Data visualization, Power BI dashboards, Excel analytics, reporting systems, 
-                and business insights for smarter decision-making.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Creative Designing</h3>
-
-            <p>
-                Modern poster designs, branding visuals, social media creatives, 
-                business presentations, and promotional content creation.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Legal Consultancy Services</h3>
-
-            <p>
-                Professional legal consultation and guidance provided by experienced advocates. 
-                Services include matrimonial advice, civil dispute case support, legal documentation, 
-                agreement drafting, affidavit preparation, and property-related guidance.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="fade">
-
-    <h2 class="section-title">Featured Projects</h2>
-
-    <p class="section-subtitle">
-        Innovative solutions and professional works delivered by Clarity Labs.
-    </p>
-
-    <div class="grid">
-
-        <div class="card">
-            <img src="image/Dashboard1.png">
-
-            <h3>Business Dashboard</h3>
-
-            <p>
-                Interactive analytics dashboards developed for monitoring KPIs, 
-                performance tracking, and business decision-making.
-            </p>
-        </div>
-
-        <div class="card">
-            <img src="image/Dashboard2.png">
-
-            <h3>Analytics Solutions</h3>
-
-            <p>
-                Advanced reporting systems and visualization tools helping organizations 
-                understand trends and optimize operations.
-            </p>
-        </div>
-
-        <div class="card">
-            <img src="image/excelworks.png">
-
-            <h3>Excel Automation</h3>
-
-            <p>
-                Data cleaning, automation, and smart reporting solutions using 
-                advanced Excel techniques and formulas.
-            </p>
-        </div>
-
-        <div class="card">
-            <img src="image/Poster.png">
-
-            <h3>Creative Designs</h3>
-
-            <p>
-                High-quality posters, branding materials, educational graphics, 
-                and promotional designs for digital platforms.
-            </p>
-        </div>
-
-        <div class="card">
-            <img src="image/PPT.png">
-
-            <h3>Business Presentations</h3>
-
-            <p>
-                Professional corporate and startup presentations focused on 
-                impactful storytelling and modern visual communication.
-            </p>
-        </div>
-
-        <div class="card">
-            <img src="image/Technicalppt.png">
-
-            <h3>Technical Documentation</h3>
-
-            <p>
-                Structured technical presentations and reports simplifying 
-                complex concepts into understandable solutions.
-            </p>
-        </div>
-
-        <div class="card">
-            <img src="image/Law Logo.jpg">
-
-            <h3>Legal Documentation Support</h3>
-
-            <p>
-                Assistance for agreements, affidavits, matrimonial guidance, 
-                civil dispute consultation, and professional legal documentation services.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="fade">
-
-    <h2 class="section-title">Why Choose Us</h2>
-
-    <p class="section-subtitle">
-        Delivering quality education, innovation, and professional solutions.
-    </p>
-
-  
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="fade">
-
-    <div class="contact-box">
-
-        <h2>Get In Touch</h2>
-
-        <p>
-            Looking for technology solutions, online training, freelance projects, 
-            legal consultancy, or academic guidance?
-        </p>
-
-        <p>
-            📧 claritylabsofficial@gmail.com
-        </p>
-
-        <p>
-            📍 Vellore, Tamil Nadu, India
-        </p>
-
-        <p>
-            ✔ AI & Python Training <br>
-            ✔ Robotics Workshops <br>
-            ✔ Freelance Projects <br>
-            ✔ Academic Support <br>
-            ✔ Matrimonial Advice <br>
-            ✔ Civil Dispute Cases
-        </p>
-
-        <p>
-            We are open for collaborations, workshops, professional consultations, 
-            and innovative technology solutions.
-        </p>
-
-    </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-    © 2026 Clarity Labs. All Rights Reserved.
-</footer>
-
-<!-- SCRIPT -->
-<script>
-
-const fades = document.querySelectorAll('.fade');
-
-window.addEventListener('scroll', () => {
-
-    fades.forEach((item) => {
-
-        if(item.getBoundingClientRect().top < window.innerHeight - 100){
-            item.classList.add('show');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarity Labs | Innovation & Consultancy</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --text: #ffffff;
+            --text-dim: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-    });
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-});
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-</script>
+        h1, h2, h3, .logo { font-family: 'Space Grotesk', sans-serif; }
 
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* --- ADVANCED INTERACTIVE BACKGROUND --- */
+        .cursor-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                        var(--accent-glow) 0%, 
+                        transparent 35%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), 
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black, transparent 70%);
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 100;
+            padding: 1.5rem 0;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
+        
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.6; transition: var(--transition); }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content { max-width: 800px; }
+        .tag { color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; display: block; margin-bottom: 1rem; }
+        
+        .hero h1 { 
+            font-size: clamp(3rem, 8vw, 5.5rem); 
+            line-height: 0.95; 
+            margin-bottom: 2rem; 
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--accent), #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 600px; margin-bottom: 3rem; }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary { background: var(--accent); color: white; border: none; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px var(--accent-glow); }
+
+        /* --- 3D TILT CARDS --- */
+        .section-padding { padding: 120px 0; position: relative; z-index: 2; }
+        .section-title { margin-bottom: 4rem; }
+        .section-title h2 { font-size: 3rem; letter-spacing: -1px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .tilt-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 12px;
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out, border-color 0.4s;
+        }
+
+        .tilt-card:hover { border-color: var(--accent); }
+
+        .card-inner { transform: translateZ(50px); }
+        .card-inner i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem; display: block; }
+        .card-inner h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .card-inner p { color: var(--text-dim); font-size: 0.95rem; }
+
+        /* --- CONTACT SECTION --- */
+        .contact-flex {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info h3 { font-size: 2rem; margin-bottom: 2rem; }
+        .info-item { margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim); }
+        .info-item i { color: var(--accent); }
+
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus { border-color: var(--accent); }
+
+        footer { padding: 4rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .nav-links { display: none; }
+            .contact-flex { grid-template-columns: 1fr; padding: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-glow"></div>
+    <div class="grid-bg"></div>
+
+    <nav>
+        <div class="container nav-flex">
+            <div class="logo">CLARITY<span>LABS</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">Consultation</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="tag">Next-Gen Professional Solutions</span>
+                <h1>Building Future Skills Through <span>Technology</span></h1>
+                <p>Empowering students and businesses through AI education, robotics training, and expert legal consultancy.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding" id="services">
+        <div class="container">
+            <div class="section-title">
+                <span class="tag">Expertise</span>
+                <h2>Specialized Solutions</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- AI & Python -->
+                <div class="tilt-card">
+                    <div class="card-inner">
+                        <i class="fab fa-python"></i>
+                        <h3>AI & Python</h3>
+                        <p>Interactive training programs covering Machine Learning, Automation, and real-world Python applications.</p>
+                    </div>
+                </div>
+
+                <!-- Robotics -->
+                <div class="tilt-card">
+                    <div class="card-inner">
+                        <i class="fas fa-robot"></i>
+                        <h3>Robotics</h3>
+                        <p>Hands-on learning with Arduino, IoT, and embedded systems for future innovators.</p>
+                    </div>
+                </div>
+
+                <!-- Legal -->
+                <div class="tilt-card">
+                    <div class="card-inner">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Legal Consultancy</h3>
+                        <p>Professional guidance on civil disputes, matrimonial advice, and legal documentation support.</p>
+                    </div>
+                </div>
+
+                <!-- Data Analytics -->
+                <div class="tilt-card">
+                    <div class="card-inner">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Data Analytics</h3>
+                        <p>Business insights through Power BI, Excel automation, and advanced data visualization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem;">Ready to innovate? Reach out for projects or professional consultancy.</p>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>claritylabsofficial@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Vellore, Tamil Nadu, India</span>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <select>
+                        <option>Select Service</option>
+                        <option>AI & Python Classes</option>
+                        <option>Robotics Training</option>
+                        <option>Legal Consultancy</option>
+                        <option>Freelance Projects</option>
+                    </select>
+                    <textarea placeholder="Your Message" rows="4"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Clarity Labs. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Mouse Tracking for Glow & Grid
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            
+            document.documentElement.style.setProperty('--x', `${x}%`);
+            document.documentElement.style.setProperty('--y', `${y}%`);
+
+            // 2. 3D Tilt Logic
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardX = e.clientX - rect.left;
+                const cardY = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((cardY - centerY) / centerY) * -10;
+                const rotateY = ((cardX - centerX) / centerX) * 10;
+                
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        });
+
+        // Reset Tilt on Leave
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
